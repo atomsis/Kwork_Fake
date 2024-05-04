@@ -18,8 +18,6 @@ def register(request):
             experience = form.cleaned_data.get('experience')
 
             user = form.save()
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
 
             CustomerProfile.objects.create(
                 user=user,

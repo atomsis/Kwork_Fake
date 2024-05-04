@@ -1,9 +1,49 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Register</button>
-</form>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">{{ form.title }}</div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="id_username">Username</label>
+              {{ form.username }}
+            </div>
+            <div class="form-group">
+              <label for="id_email">Email address</label>
+              {{ form.email }}
+            </div>
+            <div class="form-group">
+              <label for="id_password1">Password</label>
+              {{ form.password1 }}
+            </div>
+            <div class="form-group">
+              <label for="id_password2">Confirm Password</label>
+              {{ form.password2 }}
+            </div>
+            <div class="form-group">
+              <label for="id_password2">ФИО</label>
+              {{ form.name }}
+            </div>
+            <div class="form-group">
+              <label for="id_password2">Contact Info</label>
+              {{ form.contact_info }}
+            </div>
+            <div class="form-group">
+              <label for="id_password2">Experience</label>
+              {{ form.experience }}
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
