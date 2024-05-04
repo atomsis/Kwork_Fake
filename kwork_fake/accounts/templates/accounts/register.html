@@ -14,30 +14,51 @@
             <div class="form-group">
               <label for="id_username">Username</label>
               {{ form.username }}
+              {% if form.username.errors %}
+                <div class="text-danger">{{ form.username.errors }}</div>
+              {% endif %}
             </div>
             <div class="form-group">
               <label for="id_email">Email address</label>
               {{ form.email }}
+              {% if form.email.errors %}
+                <div class="text-danger">{{ form.email.errors }}</div>
+              {% endif %}
             </div>
             <div class="form-group">
               <label for="id_password1">Password</label>
               {{ form.password1 }}
+              {% if form.password1.errors %}
+                <div class="text-danger">{{ form.password1.errors }}</div>
+              {% endif %}
             </div>
             <div class="form-group">
               <label for="id_password2">Confirm Password</label>
               {{ form.password2 }}
+              {% if form.password2.errors %}
+                <div class="text-danger">{{ form.password2.errors }}</div>
+              {% endif %}
             </div>
             <div class="form-group">
-              <label for="id_password2">ФИО</label>
+              <label for="id_name">Full Name</label>
               {{ form.name }}
+              {% if form.name.errors %}
+                <div class="text-danger">{{ form.name.errors }}</div>
+              {% endif %}
             </div>
             <div class="form-group">
-              <label for="id_password2">Contact Info</label>
+              <label for="id_contact_info">Contact Info</label>
               {{ form.contact_info }}
+              {% if form.contact_info.errors %}
+                <div class="text-danger">{{ form.contact_info.errors }}</div>
+              {% endif %}
             </div>
             <div class="form-group">
-              <label for="id_password2">Experience</label>
+              <label for="id_experience">Experience</label>
               {{ form.experience }}
+              {% if form.experience.errors %}
+                <div class="text-danger">{{ form.experience.errors }}</div>
+              {% endif %}
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
           </form>
