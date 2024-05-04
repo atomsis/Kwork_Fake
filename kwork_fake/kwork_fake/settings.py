@@ -4,11 +4,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-k^7u2pffxb2)9)j(@*0yf0onyx#i897@9=1c^!-_^hrs67ta@f'
 
-
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -19,8 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'profiles.apps.ProfilesConfig'
-    'accounts.apps.AccountsConfig'
+    'profiles.apps.ProfilesConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -53,17 +51,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kwork_fake.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'kwork',  # Название вашей базы данных PostgreSQL
+        'USER': 'root',  # Имя пользователя PostgreSQL
+        'PASSWORD': 'root',  # Пароль пользователя PostgreSQL
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
 
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -83,7 +84,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -95,7 +95,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -105,3 +104,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'profile:customer_profile'
+LOGIN_URL = 'account:login'
+LOGOUT_URL = 'account:logout'

@@ -1,13 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Customer Profile</title>
-</head>
-<body>
-    <h1>Customer Profile</h1>
-    <p>Name: {{ profile.name }}</p>
-    <p>Contact Info: {{ profile.contact_info }}</p>
-    <p>Experience: {{ profile.experience }}</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Customer Profile{% endblock %}
+
+{% block content %}
+<div id="customer_or_performer">
+    <span><a href="{% url 'profile:performer_profile'%}">Performer</a></span>
+    {% if section == 'customer' %}
+        <span id="selected">
+    {% else %}
+        <span>
+    {% endif %}
+    <a href="{% url 'profile:customer_profile'%}">Customer</a></span>
+</div>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% if message %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+{% endif %}
+{% endblock %}
